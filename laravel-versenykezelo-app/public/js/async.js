@@ -5,6 +5,13 @@ jQuery(document).ready(function($){
         jQuery('#addCompetitionForm').trigger("reset");
         jQuery('#competitionFormModal').modal('show');
     });
+
+    // Fordulo hozzáadása gomb megjenítése. vagy eltünteése ha nincs verseny az adatbázisban
+    if(jQuery('#competition-list tr').length === 0){
+        jQuery('#btn-add-round').hide();
+    }
+
+
     // Verseny create
     $("#btn-save-competition").click(function (e) {
         $.ajaxSetup({
@@ -37,7 +44,8 @@ jQuery(document).ready(function($){
                     $("#competition" + data.id).replaceWith(competition);
                 }
                 jQuery('#addCompetitionForm').trigger("reset");
-                jQuery('#competitionFormModal').modal('hide')
+                jQuery('#competitionFormModal').modal('hide');
+                jQuery('#btn-add-round').show();
 
 
                 var newOption = '<option value="' + data.id + '">' + data.nev + ' (' + data.ev + ')</option>';
