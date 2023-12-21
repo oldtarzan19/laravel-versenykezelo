@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fordulok', function (Blueprint $table) {
+        Schema::create('rounds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('verseny_id')->constrained('versenyek');
+            $table->foreignId('verseny_id')->constrained('competitions');
             $table->string('nev');
             $table->timestamps();
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fordulok');
+        Schema::dropIfExists('rounds');
     }
 };
