@@ -15,11 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $felhasznalo = new User;
-    $felhasznalo->nev = 'Teszt';
-    $felhasznalo->jelszo = bcrypt('Teszt'); // Jelszót mindig titkosítani kell!
-    $felhasznalo->email = 'email@example.com';
-    $felhasznalo->save();
-
     return view('welcome');
 });
