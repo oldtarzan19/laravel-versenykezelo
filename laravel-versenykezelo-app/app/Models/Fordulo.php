@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Fordulo extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['verseny_id', 'nev'];
 }

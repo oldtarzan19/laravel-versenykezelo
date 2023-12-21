@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('versenyek', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('nev');
+            $table->integer('ev');
+            $table->string('elerheto_nyelvek')->nullable();
+            $table->integer('pontok_jo');
+            $table->integer('pontok_rossz');
+            $table->integer('pontok_ures');
             $table->timestamps();
+            $table->unique(['nev', 'ev']);
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('versenyek');
     }
 };
