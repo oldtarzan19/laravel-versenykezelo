@@ -9,6 +9,12 @@
                 <button class="btn btn-success" id="btn-add-competition">
                     Verseny hozzáadása
                 </button>
+
+
+                <button class="btn btn-primary" id="btn-add-round">
+                    Forduló hozzáadása
+                </button>
+
             </div>
         </div>
         <div>
@@ -46,40 +52,48 @@
                             <form id="addCompetitionForm" name="addCompetitionForm" class="form-horizontal" novalidate="">
 
                                 <div class="form-group">
-                                    <label>Név</label>
+                                    <label for="verseny_nev">Név</label>
                                     <input type="text" class="form-control" id="verseny_nev" name="verseny_nev"
                                            placeholder="Add meg a vereseny nevét" value="">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Verseny éve</label>
+                                    <label for="competition_year">Verseny éve</label>
                                     <input type="text" class="form-control" id="competition_year" name="competition_year"
                                            placeholder="Add meg a verseny évét" value="">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Elérhető nyelvek</label>
+                                    <label for="available_languages">Elérhető nyelvek</label>
                                     <input type="text" class="form-control" id="available_languages" name="available_languages"
                                            placeholder="Add meg az elérhető nyelveket, vesszővel elválasztva" value="">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Pontok jó válasz esetén</label>
+                                    <label for="points_correct">Pontok jó válasz esetén</label>
                                     <input type="number" class="form-control" id="points_correct" name="points_correct"
                                            placeholder="Add meg a pontok számát jó válasz esetén" value="">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Pont levonás rossz válasz esetén</label>
+                                    <label for="points_wrong">Pont levonás rossz válasz esetén</label>
                                     <input type="number" class="form-control" id="points_wrong" name="points_wrong"
                                            placeholder="Add meg a levonandó pontok számát rossz válasz esetén" value="">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Pont levonás üres válasz esetén</label>
+                                    <label for="points_empty">Pont levonás üres válasz esetén</label>
                                     <input type="number" class="form-control" id="points_empty" name="points_empty"
                                            placeholder="Add meg a levonandó pontok számát üres válasz esetén" value="">
                                 </div>
+{{--                                TODO: kitörölni mert ez csak próba--}}
+                                <select name="versenyek">
+                                    @foreach ($competitions as $verseny)
+                                        <option value="{{ $verseny->id }}">
+                                            {{ $verseny->nev }} ({{ $verseny->ev }})
+                                        </option>
+                                    @endforeach
+                                </select>
 
                             </form>
                         </div>

@@ -38,6 +38,12 @@ jQuery(document).ready(function($){
                 }
                 jQuery('#addCompetitionForm').trigger("reset");
                 jQuery('#competitionFormModal').modal('hide')
+
+
+                var newOption = '<option value="' + data.id + '">' + data.nev + ' (' + data.ev + ')</option>';
+                jQuery('select[name="versenyek"]').append(newOption);
+
+
             },
             error: function (data) {
                 console.log(data);
