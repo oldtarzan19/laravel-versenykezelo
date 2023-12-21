@@ -15,7 +15,6 @@
             <table class="table table-inverse">
                 <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Név</th>
                     <th>Év</th>
                     <th>Elérhető nyelvek</th>
@@ -24,10 +23,9 @@
                     <th>Pontok üres</th>
                 </tr>
                 </thead>
-                <tbody id="todos-list" name="todos-list">
+                <tbody id="competition-list" name="competition-list">
                 @foreach ($competitions as $data)
-                    <tr id="$competitions{{$data->id}}">
-                        <td>{{$data->id}}</td>
+                    <tr id="$competition{{$data->id}}">
                         <td>{{$data->nev}}</td>
                         <td>{{$data->ev}}</td>
                         <td>{{$data->elerheto_nyelvek}}</td>
@@ -38,14 +36,14 @@
                 @endforeach
                 </tbody>
             </table>
-            <div class="modal fade" id="formModal" aria-hidden="true">
+            <div class="modal fade" id="competitionFormModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="formModalLabel">Verseny hozzáadása</h4>
                         </div>
                         <div class="modal-body">
-                            <form id="myForm" name="myForm" class="form-horizontal" novalidate="">
+                            <form id="addCompetitionForm" name="addCompetitionForm" class="form-horizontal" novalidate="">
 
                                 <div class="form-group">
                                     <label>Név</label>
@@ -86,9 +84,8 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="btn-save" value="add">Verseny hozzáadása
+                            <button type="button" class="btn btn-primary" id="btn-save-competition" value="add">Verseny hozzáadása
                             </button>
-                            <input type="hidden" id="todo_id" name="todo_id" value="0">
                         </div>
                     </div>
                 </div>
