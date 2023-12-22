@@ -6,6 +6,13 @@ jQuery(document).ready(function($){
         jQuery('#competitionFormModal').modal('show');
     });
 
+    //----- Forduló létrehozása div megynitása -----//
+    jQuery('#btn-add-round').click(function () {
+        jQuery('#btn-save-round').val("add-round");
+        jQuery('#addRoundForm').trigger("reset");
+        jQuery('#roundFormModal').modal('show');
+    });
+
     // Fordulo hozzáadása gomb megjenítése. vagy eltünteése ha nincs verseny az adatbázisban
     if(jQuery('#competition-list tr').length === 0){
         jQuery('#btn-add-round').hide();
@@ -47,9 +54,9 @@ jQuery(document).ready(function($){
                 jQuery('#competitionFormModal').modal('hide');
                 jQuery('#btn-add-round').show();
 
-
+                // Versenyek select frissítése
                 var newOption = '<option value="' + data.id + '">' + data.nev + ' (' + data.ev + ')</option>';
-                jQuery('select[name="versenyek"]').append(newOption);
+                jQuery('select[name="versenyek_select"]').append(newOption);
 
 
             },

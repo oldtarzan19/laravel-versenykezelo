@@ -42,6 +42,7 @@
                 @endforeach
                 </tbody>
             </table>
+            {{--Új verseny hozzáadása DIV--}}
             <div class="modal fade" id="competitionFormModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -86,19 +87,56 @@
                                     <input type="number" class="form-control" id="points_empty" name="points_empty"
                                            placeholder="Add meg a levonandó pontok számát üres válasz esetén" value="">
                                 </div>
-{{--                                TODO: kitörölni mert ez csak próba--}}
-                                <select name="versenyek">
-                                    @foreach ($competitions as $verseny)
-                                        <option value="{{ $verseny->id }}">
-                                            {{ $verseny->nev }} ({{ $verseny->ev }})
-                                        </option>
-                                    @endforeach
-                                </select>
-
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" id="btn-save-competition" value="add">Verseny hozzáadása
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{--Új forduló hozzáadása DIV--}}
+            <div class="modal fade" id="roundFormModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="formModalLabel">Forduló hozzáadása</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addRoundForm" name="addRoundForm" class="form-horizontal" novalidate="">
+
+                                <div class="form-group">
+                                    <label for="versenyek_select">Verseny kiválasztása</label>
+                                    <select class="form-control" name="versenyek_select" id="versenyek_select">
+                                        @foreach ($competitions as $verseny)
+                                            <option value="{{ $verseny->id }}">
+                                                {{ $verseny->nev }} ({{ $verseny->ev }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="fordulo_name">Név</label>
+                                    <input type="text" class="form-control" id="fordulo_name" name="fordulo_name"
+                                           placeholder="Add meg a forduló nevét" value="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="round_date">Round Date</label>
+                                    <input type="date" class="form-control" id="round_date" name="round_date"
+                                           placeholder="Enter the round date" value="">
+                                </div>
+
+
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btn-save-round" value="add">Verseny hozzáadása
                             </button>
                         </div>
                     </div>

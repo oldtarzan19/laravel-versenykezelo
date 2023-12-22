@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('verseny_id')->constrained('competitions');
             $table->string('nev');
+            $table->date('datum');
             $table->timestamps();
         });
     }
