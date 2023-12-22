@@ -16,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [CrudController::class, 'index']);
-Route::resource('competition', CrudController::class);
+Route::post('/competition', [CrudController::class, 'storeCompetition']);
+Route::post('/round', [CrudController::class, 'storeRound']);
+
+//Route::resource('competition', CrudController::class);

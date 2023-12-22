@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competition;
+use App\Models\Round;
 use Response;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class CrudController extends Controller
         return view('home')->with('competitions', $competitions);
     }
 
-    public function store(Request $request)
+    public function storeCompetition(Request $request)
     {
         $data = $request->validate([
             'nev' => 'required',
@@ -28,6 +29,18 @@ class CrudController extends Controller
 
         $competition = Competition::create($data);
         return Response::json($competition);
+    }
+
+    public function storeRound(Request $request)
+    {
+        $data = $request->validate([
+            'verseny_id' => 'required',
+            'nev' => 'required',
+            'datum' => 'required',
+        ]);
+
+        $round = Round::create($data);
+        return Response::json($round);
     }
 
 

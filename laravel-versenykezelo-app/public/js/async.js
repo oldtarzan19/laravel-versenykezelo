@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
         jQuery('#roundFormModal').modal('show');
     });
 
-    // Fordulo hozzáadása gomb megjenítése. vagy eltünteése ha nincs verseny az adatbázisban
+    // Fordulo hozzáadása gomb megjenítése vagy eltünteése ha nincs verseny az adatbázisban
     if(jQuery('#competition-list tr').length === 0){
         jQuery('#btn-add-round').hide();
     }
@@ -57,6 +57,49 @@ jQuery(document).ready(function($){
                 // Versenyek select frissítése
                 var newOption = '<option value="' + data.id + '">' + data.nev + ' (' + data.ev + ')</option>';
                 jQuery('select[name="versenyek_select"]').append(newOption);
+
+
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+
+    // Forduló hozzádaása
+    $("#btn-save-round").click(function (e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        e.preventDefault();
+        var formData = {
+            verseny_id: jQuery('#versenyek_select').val(),
+            nev: jQuery('#fordulo_name').val(),
+            datum: jQuery('#round_date').val(),
+        };
+        var type = "POST";
+        var ajaxurl = 'round';
+        var state = jQuery('#btn-save-round').val();
+        $.ajax({
+            type: type,
+            url: ajaxurl,
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                /*var competition = '<tr id="competition' + data.id + '"><td>' + data.nev + '</td><td>' + data.ev + '</td><td>' + data.elerheto_nyelvek + '</td><td>' + data.pontok_jo + '</td><td>' + data.pontok_rossz + '</td><td>' + data.pontok_ures + '</td></tr>';
+                if (state === "add-round") {
+                    jQuery('#competition-list').append(competition);
+                } else {
+                    $("#competition" + data.id).replaceWith(competition);
+                }*/
+                jQuery('#addRoundForm').trigger("reset");
+                jQuery('#roundFormModal').modal('hide');
+
+                /*// Versenyek select frissítése
+                var newOption = '<option value="' + data.id + '">' + data.nev + ' (' + data.ev + ')</option>';
+                jQuery('select[name="versenyek_select"]').append(newOption);*/
 
 
             },

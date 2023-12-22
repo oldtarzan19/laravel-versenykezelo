@@ -38,6 +38,7 @@
                         <td>{{$data->pontok_jo}}</td>
                         <td>{{$data->pontok_rossz}}</td>
                         <td>{{$data->pontok_ures}}</td>
+
                     </tr>
                 @endforeach
                 </tbody>
