@@ -12,6 +12,6 @@ class User extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = ['email', 'telefonszam', 'lakcim'];
+    protected $fillable = ['nev','email', 'telefonszam', 'lakcim', 'szuletesi_ev', 'jelszo'];
 
 }

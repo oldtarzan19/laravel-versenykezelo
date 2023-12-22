@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CrudController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'index'])->name('register');
+Route::get('/', [CrudController::class, 'index'])->name('home');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/login', [RegisterController::class, 'authenticate']);
 Route::post('/competition', [CrudController::class, 'storeCompetition']);
 Route::post('/round', [CrudController::class, 'storeRound']);
 
-//Route::resource('competition', CrudController::class);
+
