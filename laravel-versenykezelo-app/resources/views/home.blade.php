@@ -15,10 +15,7 @@
                     Forduló hozzáadása
                 </button>
 
-                <form action="{{ route('register') }}" method="POST" class="d-inline-block">
-                    @csrf
-                    <button type="submit" class="btn btn-primary" id="register">Regisztráció/Bejelentkezés</button>
-                </form>
+                <a href="{{ route('register') }}" class="btn btn-primary">Regisztráció/Bejelentkezés</a>
 
             </div>
         </div>
