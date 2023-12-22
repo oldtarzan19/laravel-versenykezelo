@@ -15,6 +15,11 @@
                     Forduló hozzáadása
                 </button>
 
+                <form action="{{ route('register') }}" method="POST" class="d-inline-block">
+                    @csrf
+                    <button type="submit" class="btn btn-primary" id="register">Regisztráció/Bejelentkezés</button>
+                </form>
+
             </div>
         </div>
         <div>
@@ -38,7 +43,9 @@
                         <td>{{$data->pontok_jo}}</td>
                         <td>{{$data->pontok_rossz}}</td>
                         <td>{{$data->pontok_ures}}</td>
-
+                        {{--<td>
+                            <button class="btn btn-danger delete" id="deleteCompetition" name="{{$data->id}}">Delete</button>
+                        </td>--}}
                     </tr>
                 @endforeach
                 </tbody>
@@ -145,4 +152,5 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/async.js') }}" defer></script>
 @endsection
