@@ -15,9 +15,6 @@
                         Forduló hozzáadása
                     </button>
 
-                    <button class="btn btn-primary" id="btn-add-participant">
-                        Versenyző hozzáadása
-                    </button>
                 @endif
 
                 @if(!Auth::check())
@@ -55,11 +52,21 @@
                     @foreach ($competition->rounds as $round)
                         <tr id="round{{$round->id}}">
                             <td colspan="6" class="pl-5 py-2">
-                                Forduló neve: {{$round->nev}}, Dátum: {{$round->datum}},
+                                <b>Forduló neve:</b> {{$round->nev}}, Dátum: {{$round->datum}},
                             </td>
                             <td>
                                 <a href="participants/{{$round->id}}" class="btn btn-primary">Résztvevők</a>
                             </td>
+
+                            @if(Auth::check() && Auth::user()->email === 'admin@admin.com')
+                                <td>
+                                    <button class="btn btn-primary btn-add-participant" data-round-id="{{ $round->id }}">
+                                        Versenyző hozzáadása
+                                    </button>
+                                </td>
+
+                            @endif
+
                         </tr>
                     @endforeach
                 @endforeach
@@ -166,6 +173,42 @@
                     </div>
                 </div>
             </div>
+
+            {{--Új versenyző hozzáadása fordulóhoz DIV--}}
+
+            <div class="modal fade" id="participantFormModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="formParticipantLabel">Versenyző hozzáadása a fordulóhoz</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addParticipantForm" name="addParticipantForm" class="form-horizontal" novalidate="">
+
+                                <div class="form-group">
+                                    <label for="user_select">Versenyző kiválasztása</label>
+                                    <select class="form-control" name="user_select" id="user_select">
+                                        @foreach($users as $user)
+
+                                            <option value="{{ $user->id }}">
+                                                {{ $user->nev }}
+                                            </option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btn-save-participant" value="add">Forduló hozzáadása
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <script src="{{ asset('js/async.js') }}" defer></script>

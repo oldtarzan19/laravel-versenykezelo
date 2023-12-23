@@ -13,13 +13,23 @@ jQuery(document).ready(function($){
         jQuery('#roundFormModal').modal('show');
     });
 
+    var round_id = -1;
+
+    //----- Versenyző hozzáadása fordulóhoz div megynitása -----//
+    jQuery('.btn-add-participant').click(function () {
+        jQuery('#btn-save-participant').val("add-participant");
+        jQuery('#addParticipantForm').trigger("reset");
+        jQuery('#participantFormModal').modal('show');
+        round_id = jQuery(this).data('round-id');
+    });
+
     // Fordulo hozzáadása gomb megjenítése vagy eltünteése ha nincs verseny az adatbázisban
     if(jQuery('#competition-list tr').length === 0){
         jQuery('#btn-add-round').hide();
     }
 
 
-    // Verseny create
+    // Verseny hozzádaása
     $("#btn-save-competition").click(function (e) {
         $.ajaxSetup({
             headers: {
@@ -96,6 +106,46 @@ jQuery(document).ready(function($){
                 }
                 jQuery('#addRoundForm').trigger("reset");
                 jQuery('#roundFormModal').modal('hide');
+
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+
+
+
+    // Versenyző hozzádaása fordulóhoz
+    $("#btn-save-participant").click(function (e) {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        e.preventDefault();
+        var formData = {
+            fordulo_id: round_id,
+            felhasznalo_id: jQuery('#user_select').val(),
+        };
+        var type = "POST";
+        var ajaxurl = 'round_participant';
+        var state = jQuery('#btn-save-participant').val();
+        $.ajax({
+            type: type,
+            url: ajaxurl,
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                /*var participant = '<tr id="participant' + data.id + '"><td>' + data.nev + '</td><td>' + data.pontszam + '</td></tr>';
+                if (state === "add-participant") {
+                    jQuery('#participant-list').append(participant);
+                } else {
+                    $("#participant" + data.id).replaceWith(participant);
+                }*/
+                jQuery('#addParticipantForm').trigger("reset");
+                jQuery('#participantFormModal').modal('hide');
 
             },
             error: function (data) {

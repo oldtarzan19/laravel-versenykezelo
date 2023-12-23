@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competition;
+use App\Models\Participant;
 use App\Models\Round;
+use App\Models\User;
 use Response;
 use Illuminate\Http\Request;
 
@@ -11,8 +13,10 @@ class CrudController extends Controller
 {
     public function index(){
         $competitions = Competition::all();
-        return view('home')->with('competitions', $competitions);
+        $users = User::all();
+        return view('home')->with('competitions', $competitions)->with('users', $users);
     }
+
 
     public function storeCompetition(Request $request)
     {
@@ -50,6 +54,17 @@ class CrudController extends Controller
             return redirect()->route('home');
         }
         return view('participants')->with('round', $round);
+    }
+
+    public function storeRoundParticipant(Request $request)
+    {
+        $data = $request->validate([
+            'fordulo_id' => 'required',
+            'felhasznalo_id' => 'required'
+        ]);
+
+        $participant = Participant::create($data);
+        return Response::json($participant);
     }
 
 
