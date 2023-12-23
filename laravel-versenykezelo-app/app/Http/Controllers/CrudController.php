@@ -46,6 +46,9 @@ class CrudController extends Controller
     public function showParticipant($id){
 
         $round = Round::find($id);
+        if (!$round) {
+            return redirect()->route('home');
+        }
         return view('participants')->with('round', $round);
     }
 

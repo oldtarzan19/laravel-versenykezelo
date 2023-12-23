@@ -6,22 +6,25 @@
                 <h2>Versenykezelő</h2>
             </div>
             <div class="p-2 flex-shrink-0 bd-highlight">
-                <button class="btn btn-success" id="btn-add-competition">
-                    Verseny hozzáadása
-                </button>
+                @if(Auth::check() && Auth::user()->email === 'admin@admin.com')
+                    <button class="btn btn-success" id="btn-add-competition">
+                        Verseny hozzáadása
+                    </button>
 
+                    <button class="btn btn-primary" id="btn-add-round">
+                        Forduló hozzáadása
+                    </button>
 
-                <button class="btn btn-primary" id="btn-add-round">
-                    Forduló hozzáadása
-                </button>
+                    <button class="btn btn-primary" id="btn-add-participant">
+                        Versenyző hozzáadása
+                    </button>
+                @endif
 
                 @if(!Auth::check())
                     <a href="{{ route('register') }}" class="btn btn-primary">Regisztráció/Bejelentkezés</a>
                 @else
-                    <a href="{{ route('logout') }}" class="btn btn-primary">Kijelentkezés</a>
+                    <a href="{{ route('logout') }}" class="btn btn-danger">Kijelentkezés</a>
                 @endif
-
-
 
             </div>
         </div>
