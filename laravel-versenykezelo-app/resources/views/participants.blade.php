@@ -22,6 +22,9 @@
                         <td>{{$participant->user->nev}}</td>
                         <td>{{$participant->user->lakcim}}</td>
                         <td>{{$participant->user->szuletesi_ev}}</td>
+                        <td>
+                            <button class="btn btn-danger delete-participant" data-id="{{$participant->id}}">Törlés</button>
+                        </td>
                     </tr>
                 @endforeach
 
@@ -31,5 +34,4 @@
 
         </div>
     @endif
-
 @endsection

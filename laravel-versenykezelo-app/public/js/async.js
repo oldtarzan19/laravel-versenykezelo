@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
     var round_id = -1;
 
     //----- Versenyző hozzáadása fordulóhoz div megynitása -----//
-    jQuery('.btn-add-participant').click(function () {
+    jQuery(document).on('click', '.btn-add-participant', function () {
         jQuery('#btn-save-participant').val("add-participant");
         jQuery('#addParticipantForm').trigger("reset");
         jQuery('#participantFormModal').modal('show');
@@ -98,7 +98,7 @@ jQuery(document).ready(function($){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                var round = '<tr id="round' + data.id + '"><td colspan="6" class="pl-5 py-2">Forduló neve: ' + data.nev + ', Dátum: ' + data.datum + '</td><td><a href="participants/{{$round->id}}" class="btn btn-primary">Résztvevők</a></td></tr>';
+                var round = '<tr id="round' + data.id + '"><td colspan="6" class="pl-5 py-2"><b>Forduló neve:</b> ' + data.nev + ', Dátum: ' + data.datum + '</td><td><a href="participants/'+ data.id +'" class="btn btn-primary">Résztvevők</a></td><td><button class="btn btn-primary btn-add-participant" data-round-id="'+data.id +'">Versenyző hozzáadása</button></td></tr>';
                 if (state === "add-round") {
                     jQuery('#competition' + data.verseny_id).after(round);
                 } else {
