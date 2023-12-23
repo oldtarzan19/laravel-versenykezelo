@@ -88,7 +88,7 @@ jQuery(document).ready(function($){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                var round = '<tr id="round' + data.id + '"><td colspan="6" class="pl-5 py-2">Forduló neve: ' + data.nev + ', Dátum: ' + data.datum + '</td></tr>';
+                var round = '<tr id="round' + data.id + '"><td colspan="6" class="pl-5 py-2">Forduló neve: ' + data.nev + ', Dátum: ' + data.datum + '</td><td><a href="participants/{{$round->id}}" class="btn btn-primary">Résztvevők</a></td></tr>';
                 if (state === "add-round") {
                     jQuery('#competition' + data.verseny_id).after(round);
                 } else {

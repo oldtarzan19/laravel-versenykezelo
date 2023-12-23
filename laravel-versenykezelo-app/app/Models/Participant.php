@@ -10,4 +10,10 @@ class Participant extends Model
     use HasFactory;
 
     protected $fillable = ['felhasznalo_id', 'fordulo_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'felhasznalo_id');
+    }
+
 }

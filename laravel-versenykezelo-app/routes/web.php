@@ -23,5 +23,6 @@ Route::post('/login', [RegisterController::class, 'authenticate']);
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 Route::post('/competition', [CrudController::class, 'storeCompetition']);
 Route::post('/round', [CrudController::class, 'storeRound']);
+Route::get('/participants/{id}', [CrudController::class, 'showParticipant']);
 
 

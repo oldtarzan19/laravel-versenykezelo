@@ -52,7 +52,10 @@
                     @foreach ($competition->rounds as $round)
                         <tr id="round{{$round->id}}">
                             <td colspan="6" class="pl-5 py-2">
-                                Forduló neve: {{$round->nev}}, Dátum: {{$round->datum}}
+                                Forduló neve: {{$round->nev}}, Dátum: {{$round->datum}},
+                            </td>
+                            <td>
+                                <a href="participants/{{$round->id}}" class="btn btn-primary">Résztvevők</a>
                             </td>
                         </tr>
                     @endforeach
