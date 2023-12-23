@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('telefonszam')->nullable();
             $table->string('lakcim')->nullable();
             $table->string('szuletesi_ev')->nullable();
-            $table->string('jelszo');
+            $table->string('password');
             $table->timestamps();
         });
     }

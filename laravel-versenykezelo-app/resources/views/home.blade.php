@@ -15,7 +15,13 @@
                     Forduló hozzáadása
                 </button>
 
-                <a href="{{ route('register') }}" class="btn btn-primary">Regisztráció/Bejelentkezés</a>
+                @if(!Auth::check())
+                    <a href="{{ route('register') }}" class="btn btn-primary">Regisztráció/Bejelentkezés</a>
+                @else
+                    <a href="{{ route('logout') }}" class="btn btn-primary">Kijelentkezés</a>
+                @endif
+
+
 
             </div>
         </div>

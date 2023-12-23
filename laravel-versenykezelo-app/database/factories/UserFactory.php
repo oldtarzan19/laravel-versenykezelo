@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'telefonszam' => fake()->phoneNumber(),
             'lakcim' => fake()->address(),
             'szuletesi_ev' => fake()->year(),
-            'jelszo' => static::$password ??= Hash::make('password')
+            'password' => static::$password ??= Hash::make('password')
         ];
     }
 }

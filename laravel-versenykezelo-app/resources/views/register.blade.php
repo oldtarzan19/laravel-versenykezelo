@@ -44,11 +44,11 @@
                 </div>
                 <div class="form-group">
                     <label for="jelszo">Jelszó</label>
-                    <input type="password" class="form-control" id="jelszo" name="jelszo" placeholder="Add meg a jelszavad">
+                    <input type="password" class="form-control" id="jelszo" name="password" placeholder="Add meg a jelszavad">
                 </div>
                 <div class="form-group">
                     <label for="jelszo_again">Jelszó újra</label>
-                    <input type="password" class="form-control" id="jelszo_confirmation" name="jelszo_confirmation" placeholder="Add meg újra a jelszavad">
+                    <input type="password" class="form-control" id="jelszo_confirmation" name="password_confirmation" placeholder="Add meg újra a jelszavad">
                 </div>
                 <button type="submit" class="btn btn-primary">Regisztráció</button>
             </form>

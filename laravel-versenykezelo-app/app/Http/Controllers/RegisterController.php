@@ -22,9 +22,9 @@ class RegisterController extends Controller
             'telefonszam' => 'required',
             'lakcim' => 'required',
             'szuletesi_ev' => 'required|integer',
-            'jelszo' => 'required|confirmed',
+            'password' => 'required|confirmed',
         ]);
-        $data['jelszo'] = bcrypt($data['jelszo']);
+        $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
         auth()->login($user);
         return redirect('/');
@@ -32,12 +32,25 @@ class RegisterController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('email', 'jelszo');
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'jelszo' => ['required'],
+        ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['jelszo']])) {
             // Authentication passed...
-            return redirect('/');
+            return redirect()->intended('/');
         }
-        return redirect('/register');
+
+        return back()->withErrors([
+            'email' => 'A megadott hitelesítő adatok nem egyeznek a rekordjainkkal.',
+        ]);
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
+    }
+
+
 }

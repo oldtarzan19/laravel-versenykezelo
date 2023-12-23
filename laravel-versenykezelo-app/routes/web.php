@@ -20,6 +20,7 @@ Route::get('/', [CrudController::class, 'index'])->name('home');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [RegisterController::class, 'authenticate']);
+Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 Route::post('/competition', [CrudController::class, 'storeCompetition']);
 Route::post('/round', [CrudController::class, 'storeRound']);
 
