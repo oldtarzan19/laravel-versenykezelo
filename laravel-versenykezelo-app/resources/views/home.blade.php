@@ -29,7 +29,7 @@
             <table class="table table-inverse">
                 <thead>
                 <tr>
-                    <th>Név</th>
+                    <th>Verseny neve</th>
                     <th>Év</th>
                     <th>Elérhető nyelvek</th>
                     <th>Pontok jó</th>

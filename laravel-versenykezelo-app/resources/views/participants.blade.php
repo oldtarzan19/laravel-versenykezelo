@@ -14,14 +14,17 @@
 
             @foreach ($round->participants as $participant)
                 <tr>
-                    <td>{{$participant->nev}}</td>
-                    <td>{{$participant->lakcim}}</td>
-                    <td>{{$participant->szuletesi_ev}}</td>
+                    <td>{{$participant->user->nev}}</td>
+                    <td>{{$participant->user->lakcim}}</td>
+                    <td>{{$participant->user->szuletesi_ev}}</td>
                 </tr>
             @endforeach
 
             </tbody>
         </table>
+
+
+    </div>
 
 
 @endsection

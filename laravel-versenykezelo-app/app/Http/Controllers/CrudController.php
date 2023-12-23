@@ -46,7 +46,6 @@ class CrudController extends Controller
     public function showParticipant($id){
 
         $round = Round::find($id);
-        ddd($round->participants[0]->user);
         return view('participants')->with('round', $round);
     }
 
