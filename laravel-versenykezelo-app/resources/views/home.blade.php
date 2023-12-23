@@ -38,19 +38,26 @@
                 </tr>
                 </thead>
                 <tbody id="competition-list" name="competition-list">
-                @foreach ($competitions as $data)
-                    <tr id="$competition{{$data->id}}">
-                        <td>{{$data->nev}}</td>
-                        <td>{{$data->ev}}</td>
-                        <td>{{$data->elerheto_nyelvek}}</td>
-                        <td>{{$data->pontok_jo}}</td>
-                        <td>{{$data->pontok_rossz}}</td>
-                        <td>{{$data->pontok_ures}}</td>
-                        {{--<td>
-                            <button class="btn btn-danger delete" id="deleteCompetition" name="{{$data->id}}">Delete</button>
-                        </td>--}}
+
+                @foreach ($competitions as $competition)
+                    <tr id="competition{{$competition->id}}">
+                        <td>{{$competition->nev}}</td>
+                        <td>{{$competition->ev}}</td>
+                        <td>{{$competition->elerheto_nyelvek}}</td>
+                        <td>{{$competition->pontok_jo}}</td>
+                        <td>{{$competition->pontok_rossz}}</td>
+                        <td>{{$competition->pontok_ures}}</td>
                     </tr>
+
+                    @foreach ($competition->rounds as $round)
+                        <tr id="round{{$round->id}}">
+                            <td colspan="6" class="pl-5 py-2">
+                                Forduló neve: {{$round->nev}}, Dátum: {{$round->datum}}
+                            </td>
+                        </tr>
+                    @endforeach
                 @endforeach
+
                 </tbody>
             </table>
             {{--Új verseny hozzáadása DIV--}}
@@ -147,7 +154,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="btn-save-round" value="add">Verseny hozzáadása
+                            <button type="button" class="btn btn-primary" id="btn-save-round" value="add">Forduló hozzáadása
                             </button>
                         </div>
                     </div>

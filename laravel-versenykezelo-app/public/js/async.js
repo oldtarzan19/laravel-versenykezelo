@@ -88,19 +88,14 @@ jQuery(document).ready(function($){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                /*var competition = '<tr id="competition' + data.id + '"><td>' + data.nev + '</td><td>' + data.ev + '</td><td>' + data.elerheto_nyelvek + '</td><td>' + data.pontok_jo + '</td><td>' + data.pontok_rossz + '</td><td>' + data.pontok_ures + '</td></tr>';
+                var round = '<tr id="round' + data.id + '"><td colspan="6" class="pl-5 py-2">Forduló neve: ' + data.nev + ', Dátum: ' + data.datum + '</td></tr>';
                 if (state === "add-round") {
-                    jQuery('#competition-list').append(competition);
+                    jQuery('#competition' + data.verseny_id).after(round);
                 } else {
-                    $("#competition" + data.id).replaceWith(competition);
-                }*/
+                    $("#round" + data.id).replaceWith(round);
+                }
                 jQuery('#addRoundForm').trigger("reset");
                 jQuery('#roundFormModal').modal('hide');
-
-                /*// Versenyek select frissítése
-                var newOption = '<option value="' + data.id + '">' + data.nev + ' (' + data.ev + ')</option>';
-                jQuery('select[name="versenyek_select"]').append(newOption);*/
-
 
             },
             error: function (data) {

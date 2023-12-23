@@ -11,4 +11,9 @@ class Competition extends Model
 
     protected $fillable = ['nev', 'ev', 'elerheto_nyelvek', 'pontok_jo', 'pontok_rossz', 'pontok_ures'];
 
+    public function rounds()
+    {
+        return $this->hasMany(Round::class, 'verseny_id');
+    }
+
 }
