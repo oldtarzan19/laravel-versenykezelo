@@ -211,5 +211,5 @@
 
         </div>
     </div>
-    <script src="{{ asset('js/async.js') }}" defer></script>
+
 @endsection

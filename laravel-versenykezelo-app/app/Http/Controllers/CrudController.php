@@ -67,5 +67,21 @@ class CrudController extends Controller
         return Response::json($participant);
     }
 
+    public function deleteParticipant(Request $request)
+    {
+
+        $data = $request->validate([
+            'id' => 'required|integer', // Ensure that 'id' is an integer
+        ]);
+
+        $participant = Participant::find($data['id']);
+
+        if (!$participant) {
+            return Response::json(['error' => 'Participant not found'], 404);
+        }
+
+        $participant->delete();
+        return Response::json($participant);
+    }
 
 }

@@ -115,8 +115,6 @@ jQuery(document).ready(function($){
     });
 
 
-
-    // Versenyző hozzádaása fordulóhoz
     $("#btn-save-participant").click(function (e) {
 
         $.ajaxSetup({
@@ -153,4 +151,32 @@ jQuery(document).ready(function($){
             }
         });
     });
+    $(document).on('click', '.delete-participant', function () {
+        var participantId = $(this).data('id');
+        var url = '/delete_participant';
+
+        $.ajax({
+            type: 'DELETE',
+            url: url,
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': participantId
+            },
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (data) {
+                // Assuming the server responds with the deleted participant data
+                console.log('Participant deleted successfully');
+
+                // Remove the participant row from the table
+                $('#participant-' + participantId).remove();
+            },
+            error: function (data) {
+                console.error('Error deleting participant:', data);
+            }
+        });
+    });
+
 });

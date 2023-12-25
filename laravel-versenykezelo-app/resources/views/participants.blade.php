@@ -18,7 +18,7 @@
                 <tbody id="competition-list" name="competition-list">
 
                 @foreach ($round->participants as $participant)
-                    <tr>
+                    <tr id="participant-{{$participant->id}}">
                         <td>{{$participant->user->nev}}</td>
                         <td>{{$participant->user->lakcim}}</td>
                         <td>{{$participant->user->szuletesi_ev}}</td>
