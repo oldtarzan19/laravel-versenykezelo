@@ -26,7 +26,7 @@
             </div>
         </div>
         <div>
-            <table class="table table-inverse">
+            <table class="table table-inverse" id="mainTable">
                 <thead>
                 <tr>
                     <th>Verseny neve</th>
