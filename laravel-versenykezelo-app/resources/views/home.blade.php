@@ -189,11 +189,11 @@
                                     <label for="user_select">Versenyző kiválasztása</label>
                                     <select class="form-control" name="user_select" id="user_select">
                                         @foreach($users as $user)
-
-                                            <option value="{{ $user->id }}">
-                                                {{ $user->nev }}
-                                            </option>
-
+                                            @if($user->email !== 'admin@admin.com')
+                                                <option value="{{ $user->id }}">
+                                                    {{ $user->nev }}
+                                                </option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -201,7 +201,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="btn-save-participant" value="add">Forduló hozzáadása
+                            <button type="button" class="btn btn-primary" id="btn-save-participant" value="add">Versenyző hozzáadása
                             </button>
                         </div>
 
