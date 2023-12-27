@@ -44,7 +44,7 @@ class RegisterController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'A megadott hitelesítő adatok nem egyeznek a rekordjainkkal.',
+            'login_email' => 'A megadott hitelesítő adatok nem egyeznek a rekordjainkkal.',
         ]);
     }
 

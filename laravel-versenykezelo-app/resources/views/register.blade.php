@@ -65,8 +65,8 @@
                 @csrf
                 <div class="form-group">
                     <label for="login_email">Email cím</label>
-                    <input type="email" class="form-control" id="login_email" name="login_email" placeholder="Add meg az email címed">
-                    @error('email')
+                    <input type="email" class="form-control" id="login_email" name="login_email" placeholder="Add meg az email címed" value="{{old("login_email")}}">
+                    @error('login_email')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
