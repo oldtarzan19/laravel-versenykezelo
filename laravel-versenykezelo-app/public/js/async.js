@@ -13,6 +13,33 @@ jQuery(document).ready(function($){
         jQuery('#roundFormModal').modal('show');
     });
 
+    //----- Kilépés -----//
+    jQuery('#logout-button').click(function (e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        e.preventDefault();
+
+        var type = "POST";
+        var ajaxurl = 'logout';
+        $.ajax({
+            type: type,
+            url: ajaxurl,
+            data: {logout: 'logout'},
+            dataType: 'json',
+            success: function (data) {
+                console.log("Sikeres kijelentkezés");
+
+                location.reload();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+
     var round_id = -1;
 
     //----- Versenyző hozzáadása fordulóhoz div megynitása -----//

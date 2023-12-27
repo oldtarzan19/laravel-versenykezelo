@@ -20,7 +20,7 @@
                 @if(!Auth::check())
                     <a href="{{ route('register') }}" class="btn btn-primary">Regisztráció/Bejelentkezés</a>
                 @else
-                    <a href="{{ route('logout') }}" class="btn btn-danger">Kijelentkezés</a>
+                    <a href="{{ route('logout') }}" class="btn btn-danger" id="logout-button">Kijelentkezés</a>
                 @endif
 
             </div>

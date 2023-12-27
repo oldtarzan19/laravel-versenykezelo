@@ -34,11 +34,11 @@ class RegisterController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'jelszo' => ['required'],
+            'login_email' => ['required', 'email'],
+            'login_password' => ['required'],
         ]);
 
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['jelszo']])) {
+        if (Auth::attempt(['email' => $credentials['login_email'], 'password' => $credentials['login_password']])) {
             // Authentication passed...
             return redirect()->intended('/');
         }
@@ -48,9 +48,13 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function logout(){
+    public function logout(Request $request){
+        $data = $request->validate([
+            'logout' => 'required',
+        ]);
+        if ($data['logout'] == 'logout')
         Auth::logout();
-        return redirect('/');
+        return Response::json(true);
     }
 
 
