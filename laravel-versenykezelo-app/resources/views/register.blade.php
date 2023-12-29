@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-center align-items-center">
         <div class="mr-3 flex-grow-1 text-center">
             <!-- Regisztrációs űrlap -->
-            <form method="POST">
+            <form id="registerForm" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="nev">Név</label>

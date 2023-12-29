@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -16,19 +17,23 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        try {
+            $data = $request->validate([
+                'nev' => 'required',
+                'email' => ['required', 'email', Rule::unique('users', 'email')],
+                'telefonszam' => 'required',
+                'lakcim' => 'required',
+                'szuletesi_ev' => 'required|integer',
+                'password' => 'required|confirmed',
+            ]);
+            $data['password'] = bcrypt($data['password']);
+            $user = User::create($data);
+            auth()->login($user);
+            return response()->json("success", 200);
+        }catch (Exception $e){
+            return response()->json($e->getMessage(), 400);
+        }
 
-        $data = $request->validate([
-            'nev' => 'required',
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'telefonszam' => 'required',
-            'lakcim' => 'required',
-            'szuletesi_ev' => 'required|integer',
-            'password' => 'required|confirmed',
-        ]);
-        $data['password'] = bcrypt($data['password']);
-        $user = User::create($data);
-        auth()->login($user);
-        return redirect('/');
     }
 
     public function authenticate(Request $request)
@@ -42,7 +47,6 @@ class RegisterController extends Controller
             // Authentication passed...
             return Response::json("success");
         }
-
         return response()->json('Error', 400);
     }
 

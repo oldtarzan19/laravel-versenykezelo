@@ -239,5 +239,41 @@ jQuery(document).ready(function($){
 
     //----- Register form  -----//
 
+    $('#registerForm').on('submit', function(e){
+        e.preventDefault();
+
+        var nev = $('#nev').val();
+        var email = $('#email').val();
+        var telefonszam = $('#telefonszam').val();
+        var lakcim = $('#lakcim').val();
+        var szuletesi_ev = $('#szuletesi_ev').val();
+        var jelszo = $('#jelszo').val();
+        var jelszo_confirmation = $('#jelszo_confirmation').val();
+
+        $.ajax({
+            url: '/register',
+            type: 'POST',
+            data: {
+                nev: nev,
+                email: email,
+                telefonszam: telefonszam,
+                lakcim: lakcim,
+                szuletesi_ev: szuletesi_ev,
+                password: jelszo,
+                password_confirmation: jelszo_confirmation
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(){
+                window.location.href = '/';
+            },
+            error: function(xhr){
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+
 
 });
