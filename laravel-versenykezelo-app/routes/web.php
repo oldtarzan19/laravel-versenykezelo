@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\RegisterController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*

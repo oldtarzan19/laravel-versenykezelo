@@ -6,8 +6,8 @@ use App\Models\Competition;
 use App\Models\Participant;
 use App\Models\Round;
 use App\Models\User;
-use Response;
 use Illuminate\Http\Request;
+use Response;
 
 class CrudController extends Controller
 {

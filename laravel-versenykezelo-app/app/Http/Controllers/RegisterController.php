@@ -29,7 +29,7 @@ class RegisterController extends Controller
             $data['password'] = bcrypt($data['password']);
             $user = User::create($data);
             auth()->login($user);
-            return response()->json("success", 200);
+            return response()->json("success");
         }catch (Exception $e){
             return response()->json($e->getMessage(), 400);
         }

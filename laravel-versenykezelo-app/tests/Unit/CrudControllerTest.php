@@ -2,11 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Models\Participant;
-use App\Models\Round;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
