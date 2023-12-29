@@ -43,7 +43,7 @@ class RegisterController extends Controller
             return Response::json("success");
         }
 
-        return Response::json("error");
+        return response()->json('Error', 400);
     }
 
     public function logout(Request $request){

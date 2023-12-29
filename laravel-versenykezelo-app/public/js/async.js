@@ -206,36 +206,38 @@ jQuery(document).ready(function($){
         });
     });
 
-//----- Versenyző hozzáadása fordulóhoz div megynitása -----//
+//----- Login form  -----//
 
 
-        $('#loginForm').on('submit', function(e){
-            e.preventDefault();
+    $('#loginForm').on('submit', function(e){
+        e.preventDefault();
 
-            var email = $('#login_email').val();
-            var password = $('#login_password').val();
+        var email = $('#login_email').val();
+        var password = $('#login_password').val();
 
-            $.ajax({
-                url: '/login',
-                type: 'POST',
-                data: {
-                    login_email: email,
-                    login_password: password
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response){
-                     // ig response is "succes" redirect to the home page
-                    if(response === 'success'){
-                        window.location.href = '/';
-                    }
-
-                    if (response === 'error'){
-                        alert('Hibás email vagy jelszó!');
-                    }
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: {
+                login_email: email,
+                login_password: password
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response){
+                if(response === 'success'){
+                    window.location.href = '/';
                 }
-            });
+            },
+            error: function(){
+                alert('Hibás email vagy jelszó!');
+            }
         });
+    });
+
+
+    //----- Register form  -----//
+
 
 });
