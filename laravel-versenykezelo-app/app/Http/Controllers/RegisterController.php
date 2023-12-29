@@ -40,12 +40,10 @@ class RegisterController extends Controller
 
         if (Auth::attempt(['email' => $credentials['login_email'], 'password' => $credentials['login_password']])) {
             // Authentication passed...
-            return redirect()->intended('/');
+            return Response::json("success");
         }
 
-        return back()->withErrors([
-            'login_email' => 'A megadott hitelesítő adatok nem egyeznek a rekordjainkkal.',
-        ]);
+        return Response::json("error");
     }
 
     public function logout(Request $request){

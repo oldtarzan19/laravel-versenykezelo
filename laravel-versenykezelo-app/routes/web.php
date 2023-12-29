@@ -25,7 +25,6 @@ Route::post('/competition', [CrudController::class, 'storeCompetition']);
 Route::post('/round', [CrudController::class, 'storeRound']);
 Route::get('/participants/{id}', [CrudController::class, 'showParticipant']);
 Route::post('/round_participant', [CrudController::class, 'storeRoundParticipant']);
-/*Route::get('/delete_participant', [CrudController::class, 'deleteParticipant']);*/
 Route::delete('/delete_participant', [CrudController::class, 'deleteParticipant']);
 Route::post('/logout', [RegisterController::class, 'logout'])->name('logout');
 

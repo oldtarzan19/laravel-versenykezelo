@@ -14,7 +14,8 @@ class CrudController extends Controller
     public function index(){
         $competitions = Competition::all();
         $users = User::all();
-        return view('home')->with('competitions', $competitions)->with('users', $users);
+        $rounds = Round::all();
+        return view('home')->with('competitions', $competitions)->with('users', $users)->with('rounds', $rounds);
     }
 
 

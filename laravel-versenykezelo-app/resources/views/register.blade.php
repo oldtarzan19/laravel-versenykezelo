@@ -61,7 +61,7 @@
 
         <div class="ml-3 flex-grow-1 text-center justify-content-center">
             <!-- Bejelentkezési űrlap -->
-            <form method="POST" action="/login">
+            <form method="POST" id="loginForm">
                 @csrf
                 <div class="form-group">
                     <label for="login_email">Email cím</label>
