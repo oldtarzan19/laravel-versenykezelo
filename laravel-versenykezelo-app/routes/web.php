@@ -28,4 +28,6 @@ Route::post('/round_participant', [CrudController::class, 'storeRoundParticipant
 Route::delete('/delete_participant', [CrudController::class, 'deleteParticipant']);
 Route::post('/logout', [RegisterController::class, 'logout'])->name('logout');
 
-
+Route::fallback(function () {
+    return redirect()->route('home');
+});

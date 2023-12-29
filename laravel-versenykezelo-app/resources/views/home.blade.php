@@ -91,7 +91,7 @@
 
                                 <div class="form-group">
                                     <label for="competition_year">Verseny éve</label>
-                                    <input type="text" class="form-control" id="competition_year" name="competition_year"
+                                    <input type="number" class="form-control" id="competition_year" name="competition_year"
                                            placeholder="Add meg a verseny évét" value="">
                                 </div>
 
